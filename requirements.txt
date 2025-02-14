@@ -1,0 +1,6 @@
+pyats
+pandas
+openpyxl
+genie
+xlsxwriter
+netmiko
