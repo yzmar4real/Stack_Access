@@ -22,10 +22,12 @@ def detect_os_from_output(output):
     """
     Determines the device OS based on command output.
     """
-    output_lower = output.lower()
+    output_lower = output
     if "ios" in output_lower:
         return "ios"
-    elif "nx-os" in output_lower or "nxos" in output_lower:
+    elif "iosxe" in output_lower:
+        return "iosxe"
+    elif "NX-OS" in output_lower or "nxos" in output_lower:
         return "nxos"
     elif "asa" in output_lower:
         return "asa"
