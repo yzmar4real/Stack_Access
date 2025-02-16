@@ -44,7 +44,14 @@ for _, row in devices_data.iterrows():
         })
         
         # Connect and determine OS
-        device.connect(learn_hostname=True, learn_os=True, init_exec_commands=[], init_config_commands=[], log_stdout=False)
+        device.connect(learn_hostname=True, init_exec_commands=[], init_config_commands=[], log_stdout=False)
+        try:
+            version_output = device.parse("show version")
+            os_detected = version_output["platform"]["os"]
+            hostname = version_output["platform"]["hardware"].get("device_name", "Unknown")
+        except Exception:
+            os_detected = "Unknown"
+            hostname = "Unknown"
         os_detected = device.os if device.os else "Unknown"
         hostname = device.name if device.name else "Unknown"
         
@@ -73,3 +80,4 @@ with pd.ExcelWriter(excel_filename) as writer:
     pd.DataFrame(failed_devices).to_excel(writer, sheet_name="Failed Devices", index=False)
 
 log.info(f"\nPASS: Successfully saved results to {excel_filename}\n")
+
