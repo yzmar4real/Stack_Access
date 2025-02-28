@@ -6,6 +6,7 @@ MYSQL_ROOT_PASSWORD="your_root_password"
 MYSQL_DB_PASSWORD="your_db_password"
 TUNNEL_TOKEN="eyJhIjoiYWYwYTY3MzEwNDYxYjZiODlmNmQzNjg2NjQ1NDg5ODQiLCJ0IjoiNDAxZDBiNjQtNDc2MC00YTM4LWI3MDEtN2I1NzI0ODkwMzVmIiwicyI6IlptTTRaREkzWVdVdE1XVTVZUzAwWmpKaExUbGlObU10TjJVd1kyVmhaREUyWlRKaiJ9"
 
+
 # Function to check if the last command executed successfully
 check_status() {
     if [ $? -ne 0 ]; then
